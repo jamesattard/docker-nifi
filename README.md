@@ -1,17 +1,12 @@
-NiFi in Docker
-===============
+# NiFi in Docker
 
 This configuration builds a docker container to run Apache NiFi.
 
-
-Build Image
------------
+## Build Image
 
     $ docker build -t jamez/nifi .
 
-
-Pull image
-----------
+## Pull image
 
 If you want to pull the image already built then use this
 
@@ -19,15 +14,15 @@ If you want to pull the image already built then use this
 
 More details at https://hub.docker.com/r/jamez/nifi
 
-
-Run NiFi
----------
+## Run NiFi standalone container
 
     $ docker run -it --rm -d -p 8080:8080 jamez/nifi
 
+## Using Docker Compose
 
-Access NiFi Dashboard
----------------------
+    $ docker-compose up -d
+
+## Access NiFi Dashboard
 
 NiFi will be accessible on localhost port 8080
 

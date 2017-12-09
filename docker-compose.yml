@@ -1,0 +1,38 @@
+version: "3"
+
+services:
+
+  proxy:
+    image: jwilder/nginx-proxy
+    ports:
+      - 80:80
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    networks:
+      - proxy
+
+  nifi:
+    build:
+      context: .
+      dockerfile: nifi.Dockerfile
+    image: nifi
+    environment:
+      - VIRTUAL_HOST=nifi.localhost
+      - VIRTUAL_PORT=8080
+    volumes:
+      - database_repository:/opt/nifi/database_repository
+      - flowfile_repository:/opt/nifi/flowfile_repository
+      - content_repository:/opt/nifi/content_repository
+      - provenance_repository:/opt/nifi/provenance_repository
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    driver: bridge
+
+volumes:
+  database_repository:
+  flowfile_repository:
+  content_repository:
+  provenance_repository:
