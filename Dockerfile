@@ -1,6 +1,6 @@
 FROM centos:latest
 LABEL maintainer="Jamez (Jay) <info@jamesattard.com>"
-LABEL description="Apache NiFi 1.0.0 on Docker"
+LABEL description="Apache NiFi 1.4.0 on Docker"
 
 RUN yum update -y \
   && yum install -y which wget git java-1.8.0-openjdk python \
